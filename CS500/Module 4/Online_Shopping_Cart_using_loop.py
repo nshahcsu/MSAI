@@ -37,34 +37,47 @@ print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀')
 
 print('\n\tWelcome to the Online Shopping Cart')
-# Step 2: prompt the user for two items and create two objects of the ItemToPurchase class.
+
+# Step 2: prompt the user for multiple items and create multiple objects of the ItemToPurchase class.
+MAX_ITEM = 10
+item_count = 0
+items = []
+while (item_count< MAX_ITEM):
+    temp_item = ItemToPurchase()
+    item_count += 1
+    print('\nItem', item_count)
+    # assign user input value via attribute assignment
+    temp_item.item_name = input('Enter Item Name: \n')
+    temp_item.item_price = float(input('Enter Item Price: \n'))
+    temp_item.item_quantity = int(input('Enter Item Quantity: \n'))
+    items.append(temp_item)
     
-# Technique 1: Object creation of class ItemToPurchase using default constructor with default initialized value
-item1 = ItemToPurchase()
-print('Item 1')
-# assign user input value via property assignment
-item1.item_name = input('Enter Item Name: \n')
-item1.item_price = float(input('Enter Item Price: \n'))
-item1.item_quantity = int(input('Enter Item Quantity: \n'))
-
-# Technique 2: Take User Input and store them in local variable.
-print('\nItem 2')
-in_item_name = input('Enter Item Name: \n')
-in_item_price = float(input('Enter Item Price: \n'))
-in_item_quantity = int(input('Enter Item Quantity: \n'))
-
-# Object Creation of class ItemToPurchase using parameterized constructor with passing attribute values during initialization
-item2 = ItemToPurchase(in_item_name, in_item_price, in_item_quantity)
+    if(item_count< MAX_ITEM):
+        user_input = input('Do you want to add more item to the cart? (Y/N)\n')
+        if(user_input == 'Y' or user_input == 'y'):
+            continue
+        elif (user_input == 'N' or user_input == 'n'):
+            break
+        else:
+            user_input = input('Invalid Entry. Please select Type Y/N.\n')
+            if(user_input == 'Y' or user_input == 'y'):
+                continue
+            else:
+                break
+            
 
 
 # Step 3: Add the costs of the two items together and output the total cost
 
+Total_Cost = 0
 # Invoke print_item_cost() for each object and print item cost.
 # Calculate Total Cost and format the output values appropriately.
 print('\n-------TOTAL COST---------\n')
-item1.print_item_cost()
-item2.print_item_cost()
-print('\n\tTotal:', '${:.2f}'.format((item1.item_price * item1.item_quantity) + (item2.item_price * item2.item_quantity)))
+for item in items:
+    item.print_item_cost()
+    Total_Cost += (item.item_price * item.item_quantity)
+
+print('\n\tTotal:', '${:.2f}'.format(Total_Cost))
 print('==============================')
 print('Thank you for shopping with us!\n')
  
