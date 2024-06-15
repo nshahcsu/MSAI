@@ -41,7 +41,7 @@ try:
     print('\t  / /(_) (__)')
     print('\t / / / / / /')
     print('\t/ / / / / /')
-    print('===== Rain Statastics =====\n')
+    print('===== Rain Statistics =====\n')
     print('Total Number of Months:', total_number_of_months)
     print('Total rainfall (in', number_of_years, 'year(s)):', round((sum(lst_rainfall)),2), 'inch(es)')
     print('Average rainfall:', round((statistics.mean(lst_rainfall)),2), 'inch(es) per month \n')
